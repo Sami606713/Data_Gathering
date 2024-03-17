@@ -1,0 +1,7 @@
+setuptools
+pandas
+streamlit
+pymysql
+python-dotenv
+requests
+# -e .
