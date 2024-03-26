@@ -69,7 +69,7 @@ def create_table(conn,database_name,table_name):
 def getting_data():
     api=os.getenv("api")
     # st.write(api)
-    url=f'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey={api}'
+    url=f'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={api}'
     response=requests.get(url)
     # print(response.json()['articles'])
     response=response.json()['articles']
@@ -95,7 +95,8 @@ def insert_data(dic):
                         published_at, row['content'], row['url'], row['url-to-image'])
                 cursor.execute(query, data)
         conn.commit()
-        st.write("Successfully inserted data into the database.")
+        st.success("Successfully Inserted Data Into The Database.")
+        logging.info("Data Insert Data Successfully")
     except Exception as e:
         st.write("Error:", e)
     finally:
